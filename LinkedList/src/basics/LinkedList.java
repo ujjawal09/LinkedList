@@ -52,6 +52,22 @@ public class LinkedList {
 	public static  void destroyLinkedList() {
 		head = null;
 	}
+	
+	public static void reverseLinkedList() {
+		Node prev=null;
+		Node curr=head;
+		Node next=null;
+		while(curr!=null) {
+			head=curr;
+			next=curr.next;
+			curr.next=prev;
+			prev=curr;
+			curr=next;
+		}
+	
+		
+		
+	}
 
 	public static void main(String[] args) {
 		addAtBeg(5);
@@ -60,7 +76,8 @@ public class LinkedList {
 		addAtPos(2, 11);
 		deleteAtPos(2);
 		printLinkedList();
-		destroyLinkedList();
+		reverseLinkedList();
+		System.out.println("-----------------Reverse--------------");
 		printLinkedList();
 		
 		
