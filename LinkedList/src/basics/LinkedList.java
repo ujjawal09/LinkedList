@@ -68,19 +68,54 @@ public class LinkedList {
 		
 		
 	}
-
+	
+	
+	public static void foldALinkedList() {
+		// i/p =====> 2->5->10->12
+		// o/p =====> 2->12->5->10
+		Node slow=head;
+		Node fast=head;
+		while(fast!=null && fast.next!=null) {
+			slow=slow.next;
+			fast=fast.next.next;			
+		}
+		Node prev=null;
+		Node curr=slow;
+		
+		Node temp=null;
+		while(curr!=null) {
+			temp=curr.next;
+			curr.next=prev;
+			prev=curr;
+			curr=temp;			
+		}
+		
+		Node first=head;
+		Node second=prev;
+		while(second.next!=null) {
+			temp=first.next;
+			first.next=second;
+			first=temp;
+			temp=second.next;
+			second.next=first;
+			second=temp;
+			
+		}
+		
+		
+		
+	}
 	public static void main(String[] args) {
 		addAtBeg(5);
 		addAtBeg(10);
 		addAtBeg(15);
 		addAtPos(2, 11);
-		deleteAtPos(2);
+		//deleteAtPos(2);
 		printLinkedList();
-		reverseLinkedList();
-		System.out.println("-----------------Reverse--------------");
-		printLinkedList();
-		
-		
+		//reverseLinkedList();
+		foldALinkedList();		
+		System.out.println("-------------------------------");
+		printLinkedList();		
 	}
 
 }
